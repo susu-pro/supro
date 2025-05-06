@@ -1,4 +1,3 @@
-/* 保留原有样式并添加新tab所需样式 */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -41,7 +40,7 @@ header p {
 }
 
 
-/* --- Upload Section (Compact) --- */
+/* 上传文件 */
 .upload-section {
     background-color: #f9f9f9;
     padding: 15px 20px;
@@ -173,7 +172,7 @@ header p {
 }
 
 
-/* --- General Elements --- */
+/* --- button --- */
 button {
     background-color: #0071e3;
     color: #fff;
@@ -246,7 +245,7 @@ table tr:hover td {
 .no-results { color: #6e6e73; text-align: center; padding: 20px;}
 
 
-/* --- Search Section --- */
+/* --- 搜索 --- */
 .search-box {
     margin-bottom: 20px;
     display: flex;
@@ -269,7 +268,7 @@ table tr:hover td {
     color: #6e6e73;
 }
 
-/* --- Search History --- */
+/* --- 搜索历史 --- */
 .search-history-container {
     margin-bottom: 20px;
     padding: 15px;
@@ -340,7 +339,7 @@ table tr:hover td {
 }
 
 
-/* --- Search Results & Favorites List --- */
+/* --- 搜索结果&收藏夹 --- */
 .results-summary {
     font-size: 0.9rem;
     color: #6e6e73;
@@ -436,26 +435,26 @@ table tr:hover td {
 .result-footer .score { margin-left: 10px; }
 .result-footer button { margin-left: 5px; }
 
-/* Hide specific footer elements when context is expanded */
+/*hide页脚 */
 .result-item.context-expanded .result-footer .source,
 .result-item.context-expanded .result-footer .score {
     display: none;
 }
 
 
-/* --- Favorite Button --- */
+/* --- 收藏夹button--- */
 .favorite-button { background: none; border: none; color: #6e6e73; cursor: pointer; padding: 5px; font-size: 1rem; line-height: 1; transition: color 0.2s, transform 0.1s; order: 3; }
 .favorite-button:before { content: '☆'; font-size: 1.2rem; }
 .favorite-button:hover { color: #0071e3; transform: scale(1.1); }
 .favorite-button.is-favorite { color: #ffcc00; }
 .favorite-button.is-favorite:before { content: '★'; }
 
-/* --- View Original Search Button --- */
+
 .view-original-search-btn { background-color: #f0f0f0; color: #0071e3; border: 1px solid #d1d1d6; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: background-color 0.2s, border-color 0.2s; white-space: nowrap; order: 2; }
 .view-original-search-btn:hover { background-color: #e5e5ea; border-color: #c7c7cc; }
 
 
-/* --- Message Display --- */
+/* --- 信息 --- */
 .message { padding: 10px 12px; margin-bottom: 8px; border-radius: 18px; max-width: 85%; word-wrap: break-word; }
 .message-sent { background-color: #007aff; color: white; margin-left: auto; border-bottom-right-radius: 5px; }
 .message-received { background-color: #e5e5ea; color: #1d1d1f; margin-right: auto; border-bottom-left-radius: 5px; }
@@ -466,7 +465,7 @@ table tr:hover td {
 .message-received .message-time { color: rgba(0, 0, 0, 0.5); }
 .message-sent .message-time { color: rgba(255, 255, 255, 0.7); }
 
-/* Conversation Context */
+/* 对话 */
 .conversation-context {
     display: block;
     max-width: 90%;
@@ -482,7 +481,7 @@ table tr:hover td {
 .current-context-message { border: 2px solid #007aff; box-shadow: 0 0 5px rgba(0, 122, 255, 0.3); margin: 5px 0; }
 
 
-/* --- Pagination --- */
+
 .pagination { display: flex; justify-content: center; margin-top: 25px; gap: 5px; flex-wrap: wrap; }
 .pagination button { background-color: #f5f5f7; color: #0071e3; border: 1px solid #d1d1d6; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; min-width: 35px; text-align: center; }
 .pagination button:hover:not(:disabled) { background-color: #e5e5ea; }
@@ -491,17 +490,17 @@ table tr:hover td {
 .page-ellipsis { padding: 6px 5px; color: #8e8e93; align-self: center; }
 
 
-/* --- Stats Card --- */
+
 .stats-card { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; padding: 15px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #e5e5e5; }
 .stat-item { background-color: #fff; padding: 15px 20px; border-radius: 8px; flex: 1 1 150px; min-width: 130px; text-align: center; border: 1px solid #e5e5e5; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: box-shadow 0.2s ease-in-out; }
 .stat-item:hover { box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08); }
 .stat-value { font-size: 1.8rem; font-weight: 600; color: #0071e3; margin-bottom: 5px; line-height: 1.2; }
 .stat-label { font-size: 0.85rem; color: #6e6e73; }
 
-/* --- Other --- */
+
 .file-info { background-color: #f0f0f0; padding: 6px 10px; margin: 15px 0 5px 0; border-radius: 4px; font-size: 0.8rem; color: #555; text-align: center; font-style: italic; }
 
-/* --- 新增：通话记录和浏览记录分析样式 --- */
+/* --- 通话记录和浏览记录分析--- */
 .chart-container {
     background-color: #ffffff;
     padding: 20px;
@@ -606,35 +605,35 @@ table tr:hover td {
 }
 
 .top-item-bar.incoming {
-    background-color: #34c759; /* 绿色 */
+    background-color: #34c759; 
 }
 
 .top-item-bar.outgoing {
-    background-color: #007aff; /* 蓝色 */
+    background-color: #007aff; 
 }
 
 .top-item-bar.missed {
-    background-color: #ff3b30; /* 红色 */
+    background-color: #ff3b30; 
 }
 
 .top-item-bar.social {
-    background-color: #5856d6; /* 紫色 */
+    background-color: #5856d6; 
 }
 
 .top-item-bar.news {
-    background-color: #ff9500; /* 橙色 */
+    background-color: #ff9500; 
 }
 
 .top-item-bar.shopping {
-    background-color: #ff2d55; /* 粉色 */
+    background-color: #ff2d55;
 }
 
 .top-item-bar.video {
-    background-color: #af52de; /* 紫色 */
+    background-color: #af52de; 
 }
 
 .top-item-bar.other {
-    background-color: #8e8e93; /* 灰色 */
+    background-color: #8e8e93;
 }
 
 .records-list {
@@ -743,7 +742,7 @@ table tr:hover td {
     border-radius: 2px;
 }
 
-/* 颜色样式扩展 */
+
 .color-incoming { background-color: #34c759; }
 .color-outgoing { background-color: #007aff; }
 .color-missed { background-color: #ff3b30; }
@@ -753,7 +752,7 @@ table tr:hover td {
 .color-video { background-color: #af52de; }
 .color-other { background-color: #8e8e93; }
 
-/* 响应式调整 */
+/* 响应式 */
 @media (max-width: 768px) {
     .container { padding: 15px; margin: 10px auto; }
     header h1 { font-size: 1.8rem; }
@@ -774,8 +773,6 @@ table tr:hover td {
     .conversation-context { max-width: 95%; }
     .pagination { justify-content: center; }
     .pagination button { padding: 5px 10px; font-size: 0.85rem; }
-    
-    /* 新增响应式调整 */
     .filter-section { flex-direction: column; gap: 10px; }
     .filter-item { width: 100%; }
     .top-list { grid-template-columns: 1fr; }
@@ -790,7 +787,7 @@ table tr:hover td {
     .message { padding: 8px 10px; border-radius: 15px;}
     .message-content { font-size: 0.9rem; }
     
-    /* 更小屏幕设备的其他调整 */
+    /* 更小屏幕设备 */
     .record-item { flex-direction: column; align-items: flex-start; }
     .record-icon { margin-bottom: 10px; }
     .record-duration { margin-left: 0; margin-top: 5px; }
