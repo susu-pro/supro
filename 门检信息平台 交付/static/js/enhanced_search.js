@@ -1,13 +1,12 @@
-// static/js/enhanced_search.js
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('keywordSearch'); // 假设搜索输入框 ID
-    const searchButton = document.getElementById('searchButton'); // 假设搜索按钮 ID
-    const searchResultsContainer = document.getElementById('searchResults'); // 假设结果容器 ID
-    const searchTypeSelect = document.getElementById('searchTypeSelect'); // 搜索类型选择器
+    const searchInput = document.getElementById('keywordSearch'); 
+    const searchButton = document.getElementById('searchButton'); 
+    const searchResultsContainer = document.getElementById('searchResults'); 
+    const searchTypeSelect = document.getElementById('searchTypeSelect');
 
     let currentPage = 1;
     let currentQuery = '';
-    let currentSearchType = 'combined'; // 默认搜索类型
+    let currentSearchType = 'combined'; 
 
     // --- 初始化 ---
     setupSearchControls();
@@ -30,13 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
             searchTypeSelect.addEventListener('change', function() {
                 currentSearchType = this.value;
                 // 如果已有查询词，可以自动重新搜索
-                // if (currentQuery) {
-                //     startSearch();
-                // }
             });
         }
-         // 加载搜索历史建议的容器（如果存在）
-         const historySuggestionsContainer = document.getElementById('searchHistorySuggestions'); // 需要在 HTML 中添加这个 div
+         const historySuggestionsContainer = document.getElementById('searchHistorySuggestions'); 
          if (historySuggestionsContainer) {
              historySuggestionsContainer.addEventListener('click', function(e) {
                  if (e.target.classList.contains('suggestion-item')) {
@@ -132,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentPage === 1) { // 只在第一页显示摘要
              resultsHTML += `<div class="results-summary">找到 ${data.total || 0} 个结果 (搜索类型: ${getSearchTypeDisplay(data.search_type)})</div>`;
         }
-        resultsHTML += '<div class="results-list">'; // 用于包裹结果项
+        resultsHTML += '<div class="results-list">'; 
 
         results.forEach(result => {
              // 确保 result.data 存在
@@ -140,30 +135,22 @@ document.addEventListener('DOMContentLoaded', function() {
                  console.warn("Invalid search result structure:", result);
                  return; // 跳过无效项
              }
-             // 调用 main.js 中的渲染函数（如果 main.js 已加载并定义了全局函数）
-             // 或者在这里复制/重用渲染逻辑
-             resultsHTML += renderResultItem(result.data, false); // 使用渲染函数，标记不在收藏夹列表
+             resultsHTML += renderResultItem(result.data, false); 
         });
 
-        resultsHTML += '</div>'; // results-list
-
+        resultsHTML += '</div>'; 
+        
         // 添加分页
         if (data.total_pages > 1) {
-            // 调用 main.js 中的分页函数或在这里复制/重用
-            resultsHTML += createPagination(data.page, data.total_pages, 'search'); // 标记分页来源为 search
-        }
+            resultsHTML += createPagination(data.page, data.total_pages, 'search'); 
 
         searchResultsContainer.innerHTML = resultsHTML;
 
-        // 为分页按钮和收藏按钮添加事件监听
-        addPaginationListeners(searchResultsContainer.querySelector('.pagination'), performSearch, 'search'); // 传递 performSearch 作为回调
-        addFavoriteButtonListeners(searchResultsContainer); // 为新渲染的结果添加监听
+        addPaginationListeners(searchResultsContainer.querySelector('.pagination'), performSearch, 'search'); 
+        addFavoriteButtonListeners(searchResultsContainer); 
     }
 
     // --- 收藏夹按钮逻辑 (复用或独立实现) ---
-    // 这些函数可以放在全局作用域（如果在 main.js 中定义了）
-    // 或者在这里重新定义，确保能访问到 addFavorite 和 removeFavorite
-
     function addFavorite(type, id, buttonElement) {
         // (与 main.js 中的 addFavorite 逻辑相同)
          fetch('/api/favorites/add', {
@@ -186,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function removeFavorite(type, id, buttonElement, isInFavoritesList = false) {
-         // (与 main.js 中的 removeFavorite 逻辑相同，但 isInFavoritesList 通常为 false)
           fetch('/api/favorites/remove', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -221,11 +207,10 @@ document.addEventListener('DOMContentLoaded', function() {
          const type = button.getAttribute('data-type');
          const id = button.getAttribute('data-id');
          if (type && id) {
-             removeFavorite(type, id, button, false); // 在搜索结果中移除，isInFavoritesList 为 false
+             removeFavorite(type, id, button, false); 
          }
      }
 
-     // 为容器内的收藏按钮添加事件监听
      function addFavoriteButtonListeners(container) {
          if (!container) return;
          container.querySelectorAll('.favorite-button').forEach(button => {
@@ -237,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  button.addEventListener('click', handleAddFavoriteClick);
              }
          });
-          // 为对话上下文按钮添加事件监听 (与 main.js 逻辑一致)
+         
           container.querySelectorAll('.show-context-btn').forEach(button => {
               const listener = () => {
                   const resultId = button.getAttribute('data-result-id');
@@ -248,7 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
                       button.textContent = isVisible ? '显示上下文' : '隐藏上下文';
                   }
               };
-              // 清理可能存在的旧监听器并重新绑定
               button.replaceWith(button.cloneNode(true));
               const newButton = container.querySelector(`.show-context-btn[data-result-id="${button.getAttribute('data-result-id')}"]`);
               if(newButton) newButton.addEventListener('click', listener);
@@ -260,12 +244,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 渲染单个结果项 (需要与 main.js 中的版本保持一致或共享)
     function renderResultItem(metadata, isInFavoritesList = false) {
-         // (与 main.js 中的 renderResultItem 逻辑相同)
          if (!metadata || !metadata.type) return '';
          const type = metadata.type;
          const id = metadata.id || metadata.group_id || metadata.wechat_id || uuid.v4();
-         const isFavorite = metadata.is_favorite || isInFavoritesList; // 在收藏夹列表里也是 true
-
+         const isFavorite = metadata.is_favorite || isInFavoritesList; 
          let content = '';
          let headerInfo = '';
          let footerInfo = '';
@@ -351,9 +333,8 @@ document.addEventListener('DOMContentLoaded', function() {
          `;
      }
 
-    // 创建分页HTML (需要与 main.js 中的版本保持一致或共享)
+    // 分页HTML
     function createPagination(currentPage, totalPages, source = 'search') {
-         // (与 main.js 中的 createPagination 逻辑相同)
          if (totalPages <= 1) return '';
          let html = `<div class="pagination" data-pagination-source="${source}">`;
          html += `<button data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>&laquo; 上一页</button>`;
@@ -382,15 +363,13 @@ document.addEventListener('DOMContentLoaded', function() {
          html += '</div>';
          return html;
      }
-
-     // 为分页按钮添加事件监听 (需要与 main.js 中的版本保持一致或共享)
      function addPaginationListeners(container, loadFunction, source) {
           if (!container) return;
           container.querySelectorAll('button[data-page]').forEach(button => {
               button.addEventListener('click', function() {
                   if (this.disabled) return;
                   currentPage = parseInt(this.getAttribute('data-page')); // 更新当前页
-                  loadFunction(); // 调用 performSearch (因为这是 enhanced_search.js)
+                  loadFunction();
 
                   // 滚动到结果列表顶部
                   if(searchResultsContainer) searchResultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -412,7 +391,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 格式化时间函数
     function formatTime(timeStr) {
-         // (与 main.js 中的 formatTime 逻辑相同)
          if (!timeStr || timeStr === 'None' || timeStr === 'NaT') return '未知时间';
          try {
              let date = new Date(timeStr);
@@ -425,13 +403,9 @@ document.addEventListener('DOMContentLoaded', function() {
          } catch (e) { return timeStr; }
      }
 
-    // 获取搜索类型显示文本
+    // 搜索显示文本
     function getSearchTypeDisplay(type) {
         const typeMap = { 'combined': '混合', 'keyword': '关键词', 'semantic': '语义', 'sender': '发送者' };
         return typeMap[type] || type;
     }
-
-    // 获取匹配类型显示文本 (如果需要)
-    // function getMatchTypeDisplay(type) { ... }
-
 });
