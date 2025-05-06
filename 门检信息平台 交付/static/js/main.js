@@ -1,4 +1,3 @@
-// static/js/main.js
 document.addEventListener('DOMContentLoaded', function() {
     console.log("[Init] DOMContentLoaded event fired.");
 
@@ -8,25 +7,24 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentSearchQuery = '';
     let currentFavoritesPage = 1;
     let taskCheckInterval = null;
-    let currentCallExcelId = localStorage.getItem('lastCallExcelId'); // Load from storage on init
+    let currentCallExcelId = localStorage.getItem('lastCallExcelId'); 
     let currentCallChartId = null;
 
     console.log("[Init] Acquiring DOM elements...");
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
-    const uploadForm = document.getElementById('uploadForm'); // Assuming form exists
-    const fileInput = document.getElementById('fileInput'); // Assuming input exists
+    const uploadForm = document.getElementById('uploadForm'); 
+    const fileInput = document.getElementById('fileInput'); 
     const uploadStatus = document.getElementById('uploadStatus');
     const searchButton = document.querySelector('#searchTab #searchButton');
     const keywordSearch = document.getElementById('keywordSearch');
     const searchResultsContainer = document.getElementById('searchResults');
-    const searchHistoryContainer = document.getElementById('searchHistory'); // Changed from searchHistoryList
-    const searchPaginationContainer = document.getElementById('searchPagination'); // Added
-    // const clearHistoryButton = document.getElementById('clearHistoryButton'); // Button is now inside searchHistoryContainer
-    const favoritesListContainer = document.getElementById('favoritesList'); // Changed from favoritesList
-    const favoritesPaginationContainer = document.getElementById('favoritesPagination'); // Changed from favoritesNavigation
-    const messagesListContainer = document.getElementById('messagesList'); // Changed from messagesListEl
-    const messagesPaginationContainer = document.getElementById('messagesPagination'); // Changed from messagesNavigationEl
+    const searchHistoryContainer = document.getElementById('searchHistory'); 
+    const searchPaginationContainer = document.getElementById('searchPagination'); 
+    const favoritesListContainer = document.getElementById('favoritesList'); 
+    const favoritesPaginationContainer = document.getElementById('favoritesPagination'); 
+    const messagesListContainer = document.getElementById('messagesList'); 
+    const messagesPaginationContainer = document.getElementById('messagesPagination'); 
 
     // Elements for Call Records Tab
     const callRecordsTab = document.getElementById('callRecordsTab');
